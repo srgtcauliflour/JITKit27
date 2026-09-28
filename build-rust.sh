@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-export IPHONEOS_DEPLOYMENT_TARGET="${IPHONEOS_DEPLOYMENT_TARGET:-26.0}"
+export IPHONEOS_DEPLOYMENT_TARGET="${IPHONEOS_DEPLOYMENT_TARGET:-27.0}"
 source "$HOME/.cargo/env" 2>/dev/null || true
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 cd "$ROOT/rust-core"
