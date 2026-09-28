@@ -1,6 +1,6 @@
 # JITKit27
 
-On-device pairing toolkit for iOS 27 and experimental iPadOS 26 support.
+On-device pairing toolkit for iOS 27 and iPadOS 27.
 
 ## v0.1
 Generate an RPPairing record on-device, validate it by opening an RSD tunnel back to the physical device, build the compatible pairing payload, and export a `.mobiledevicepairing` file.
@@ -9,8 +9,10 @@ Generate an RPPairing record on-device, validate it by opening an RSD tunnel bac
 Use the validated pairing identity and RSD transport to provide on-device JIT enablement.
 
 ### Compatibility
-- iOS 27+: primary self-pairing target.
-- iPadOS 26: experimental runtime-probed target until physical-device behavior is confirmed.
+- iOS 27.0+
+- iPadOS 27.0+
+
+Both platforms use the same minimum deployment target and Remote Pairing capability path.
 
 ### Build
 Requires Xcode 27, Rust targets `aarch64-apple-ios` + `aarch64-apple-ios-sim`, and XcodeGen.
