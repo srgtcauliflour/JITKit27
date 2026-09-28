@@ -13,8 +13,13 @@ final class PairingStore: ObservableObject {
     }
 
     func beginPairing() {
+        guard isSelfPairingExpected else {
+            stage = .failed
+            detail = "JITKit27 requires iOS 27.0 or iPadOS 27.0 or later."
+            return
+        }
         stage = .pairing
-        detail = isSelfPairingExpected ? "Preparing Remote Pairing host…" : "Experimental OS target: probing Remote Pairing capability."
+        detail = "Preparing Remote Pairing host…"
     }
 
     func validate() {
