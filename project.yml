@@ -2,7 +2,7 @@ name: JITKit27
 options:
   bundleIdPrefix: com.srgtcauliflour
   deploymentTarget:
-    iOS: "26.0"
+    iOS: "27.0"
   createIntermediateGroups: true
 settings:
   base:
