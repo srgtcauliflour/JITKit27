@@ -4,7 +4,7 @@ on:
   pull_request:
 jobs:
   build:
-    runs-on: macos-15
+    runs-on: xcode-27
     steps:
       - uses: actions/checkout@v4
       - name: Install XcodeGen
@@ -25,7 +25,7 @@ jobs:
           xcodebuild -version
           xcrun --sdk iphoneos --show-sdk-version
       - name: Build Rust core
-        run: ./build-rust.sh
+        run: bash ./build-rust.sh
       - name: Generate project
         run: xcodegen generate
       - name: Build unsigned device app
