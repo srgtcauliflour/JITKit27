@@ -1,0 +1,4 @@
+module JITKit27FFI {
+    header "jitkit27.h"
+    export *
+}

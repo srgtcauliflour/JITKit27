@@ -1,0 +1,32 @@
+name: Build
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: xcode-27
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Configure Rust targets
+        run: |
+          echo "/opt/homebrew/opt/rustup/bin" >> "$GITHUB_PATH"
+          export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+          rustup default stable
+          rustup target add aarch64-apple-ios aarch64-apple-ios-sim
+          rustc --version
+          cargo --version
+      - name: Select Xcode
+        run: |
+          if [ -d /Applications/Xcode_27.0.app ]; then
+            sudo xcode-select -s /Applications/Xcode_27.0.app/Contents/Developer
+          fi
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
+      - name: Build Rust core
+        run: bash ./build-rust.sh
+      - name: Generate project
+        run: xcodegen generate
+      - name: Build unsigned device app
+        run: xcodebuild -project JITKit27.xcodeproj -scheme JITKit27 -sdk iphoneos -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED=NO build

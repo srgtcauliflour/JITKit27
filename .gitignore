@@ -1,0 +1,7 @@
+/rust-core/target/
+/JITKit27FFI.xcframework/
+/JITKit27.xcodeproj/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+.DS_Store
